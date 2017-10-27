@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">lloyds</string>
+    <string name="loading">Loading...</string>
+    <string name="empty">empty</string>
+    <string name="search">search</string>
+    <string name="image">item.view.image</string>
+    <string name="imageactvitydetail.content.description">image</string>
+    <string name="activity.detail.web.url">web_url</string>
+    <string name="activity.detail.streamable">streamable</string>
+    <string name="activity.detail.mbid">mbid</string>
+    <string name="activity.detail.listener">listener</string>
+    <string name="activity_detail_album_title">Album Detail</string>
+    <string name="activity_detail_track_title">Track Title</string>
+    <string name="activity_detail_web_url_title">Web Url</string>
+</resources>

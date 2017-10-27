@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/activity_detail_image"
+        android:contentDescription="@string/imageactvitydetail.content.description"
+        android:src="@drawable/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <TextView
+        android:id="@+id/activity_detail_url_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:text="@string/activity_detail_web_url_title"
+        android:textSize="@dimen/font.size.one"
+        android:padding="@dimen/activity_detail_padding"
+        tools:text= "@string/activity.detail.web.url"/>
+
+        <TextView
+        android:id="@+id/activity_detail_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font.size.one"
+        android:padding="@dimen/activity_detail_padding"
+        tools:text= "@string/activity.detail.web.url"/>
+
+        <TextView
+            android:id="@+id/activity_detail_streamable_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font.size.one"
+            android:padding="@dimen/activity_detail_padding"
+            android:text="Streamable"
+            tools:text= "@string/activity.detail.streamable"/>
+
+        <TextView
+        android:id="@+id/activity_detail_streamable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font.size.one"
+        android:padding="@dimen/activity_detail_padding"
+        tools:text= "@string/activity.detail.streamable"/>
+
+        <TextView
+            android:id="@+id/activity_detail_mbid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity.detail.mbid"
+            android:textSize="@dimen/font.size.one"
+            android:padding="@dimen/activity_detail_padding"
+            tools:text= "@string/activity.detail.mbid"/>
+
+    <TextView
+        android:id="@+id/activity_detail_mbid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font.size.one"
+        android:padding="@dimen/activity_detail_padding"
+        tools:text= "@string/activity.detail.mbid"/>
+
+        <TextView
+            android:id="@+id/activity_detail_listener_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font.size.one"
+            android:padding="@dimen/activity_detail_padding"
+            android:text="@string/activity.detail.listener" />
+
+        <TextView
+        android:id="@+id/activity_detail_listener"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font.size.one"
+        android:padding="@dimen/activity_detail_padding"
+        tools:text= "@string/activity.detail.listener"/>
+
+    </LinearLayout>
+
+</ScrollView>

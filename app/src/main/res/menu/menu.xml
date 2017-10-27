@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".android.activity.view.ResultActivity">
+    <item android:id="@+id/action_album" android:title="Album"
+        android:orderInCategory="100" app:showAsAction="withText" />
+    <item android:id="@+id/action_track" android:title="track"
+        android:orderInCategory="101" app:showAsAction="withText" />
+    <item android:id="@+id/action_artist" android:title="Artist"
+        android:orderInCategory="102" app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search"/>
+</menu>

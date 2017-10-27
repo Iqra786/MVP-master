@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activity_detail_album_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/activity_heading"
+        android:text="@string/activity_detail_album_title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activity_detail_album_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/font.size.one"
+        android:text="Album Name"
+        tools:text="Album Detail" />
+
+    <TextView
+        android:id="@+id/activity_detail_album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/font.size.one"
+        tools:text="Album Detail" />
+
+    <TextView
+        android:id="@+id/activity_detail_album_artist_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/font.size.one"
+        android:text="Artist Name"
+        tools:text="Artist Name" />
+
+    <TextView
+        android:id="@+id/activity_detail_album_artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/font.size.one"
+        tools:text="Album Detail" />
+
+    <include layout="@layout/activity_detail"/>
+
+
+</LinearLayout>
