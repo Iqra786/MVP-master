@@ -17,7 +17,7 @@ import android.widget.ViewAnimator;
 
 
 import com.prac.mvp.R;
-import com.prac.mvp.android.LloydApplicationImpl;
+import com.prac.mvp.android.LearnApplicationImpl;
 import com.prac.mvp.android.Options;
 import com.prac.mvp.android.activity.adaptor.AlbumAdaptor;
 import com.prac.mvp.android.activity.adaptor.ArtistAdaptor;
@@ -58,7 +58,7 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((LloydApplicationImpl) getApplication()).getComponent().inject(this);
+        ((LearnApplicationImpl) getApplication()).getComponent().inject(this);
         mAnimator = findViewById(R.id.animator);
         recyclerView = (RecyclerView) (mAnimator != null ? mAnimator.getChildAt(POSITION_LIST) : null);
         resultActivityPresenter = new ResultActivityPresenter(this, resultDAO);

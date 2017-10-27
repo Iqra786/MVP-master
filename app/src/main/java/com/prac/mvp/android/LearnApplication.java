@@ -5,7 +5,7 @@ import android.app.Application;
 
 import com.prac.mvp.android.components.ApplicationComponent;
 
-public abstract  class LloydApplication extends Application {
+public abstract  class LearnApplication extends Application {
 
     protected ApplicationComponent mComponent;
 

@@ -4,7 +4,7 @@ package com.prac.mvp.android;
 import com.prac.mvp.android.components.DaggerApplicationComponent;
 import com.prac.mvp.android.modules.ApplicationModule;
 
-public class LloydApplicationImpl extends LloydApplication {
+public class LearnApplicationImpl extends LearnApplication {
 
 
     @Override
