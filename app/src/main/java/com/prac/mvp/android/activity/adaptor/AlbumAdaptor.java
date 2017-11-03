@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.prac.mvp.R;
 import com.prac.mvp.android.activity.view.AlbumDetailActivity;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 import com.prac.mvp.model.Album;
 
 
@@ -29,20 +29,20 @@ private    List<Album> albums = new ArrayList<>();
     protected void viewBinder(final ItemViewHolderAdaptor itemViewHolderAdaptor, int i) {
         try {
             itemViewHolderAdaptor.name.setText( albums.get(i).getAlbumName());
-        } catch (DataNoAvailableException e) {
+        } catch (DataNotAvailableException e) {
             Log.e(TAG , e.getMessage());
         }
 
         try {
             itemViewHolderAdaptor.artistName.setText(albums.get(i).getArtistName());
-        } catch (DataNoAvailableException e) {
+        } catch (DataNotAvailableException e) {
             Log.e(TAG , e.getMessage());
         }
 
         try {
             String   url = albums.get(i).getImages().get(1).getImageLink();
             imageLoader(url , itemViewHolderAdaptor.artWork);
-        } catch (DataNoAvailableException|NullPointerException|IllegalArgumentException e) {
+        } catch (DataNotAvailableException |NullPointerException|IllegalArgumentException e) {
             Log.e(TAG , e.getMessage());
         }
         itemViewHolderAdaptor.itemView.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ private    List<Album> albums = new ArrayList<>();
                     data.putString("image_Url", album.getImages().get(2).getImageLink());
                     data.putString("listener", album.getListener());
                 }
-                catch (DataNoAvailableException e) {
+                catch (DataNotAvailableException e) {
                     Log.e(TAG , e.getMessage());
                 }
                 Intent intent = new Intent(itemViewHolderAdaptor.artistName.getContext() , AlbumDetailActivity.class);

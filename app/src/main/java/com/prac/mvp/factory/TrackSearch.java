@@ -1,6 +1,7 @@
 package com.prac.mvp.factory;
 
 
+import com.prac.mvp.android.Options;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.model.Result;
 
@@ -18,6 +19,6 @@ public class TrackSearch implements Search {
 
     @Override
     public Observable<Result> search(String search) {
-        return resultDAO.getTrack(search).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return resultDAO.getResult(search , Options.TRACK).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

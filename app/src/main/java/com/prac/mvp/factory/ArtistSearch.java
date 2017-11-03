@@ -1,6 +1,7 @@
 package com.prac.mvp.factory;
 
 
+import com.prac.mvp.android.Options;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.model.Result;
 
@@ -19,9 +20,6 @@ public class ArtistSearch implements Search {
 
     @Override
     public Observable<Result> search(String search) {
-        return resultDAO.getArtist(search).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return resultDAO.getResult(search , Options.ARTIST).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-
-
-
 }

@@ -4,6 +4,8 @@ package com.prac.mvp.data_manager;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.prac.mvp.android.Options;
+import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.model.ApiError;
 import com.prac.mvp.model.Result;
 import com.prac.mvp.presenter.DAOManagerResponse;
@@ -15,18 +17,21 @@ import rx.Observable;
 import rx.Subscriber;
 
 
+
 public class DAOManager {
 
     private final static String TAG = DAOManager.class.getSimpleName();
 
     private DAOManagerResponse daoManagerResponse;
+    private ResultDAO resultDAO;
 
-    public DAOManager(DAOManagerResponse daoManagerResponse) {
+    public DAOManager(DAOManagerResponse daoManagerResponse , ResultDAO resultDAO) {
         this.daoManagerResponse = daoManagerResponse;
+        this.resultDAO = resultDAO;
     }
 
 
-    public void search(final Observable<Result> observer) {
+    private void apiTask(final Observable<Result> observer) {
         observer.subscribe(new Subscriber<Result>() {
             @Override
             public void onCompleted() {
@@ -73,5 +78,15 @@ public class DAOManager {
                 }
             }
         });
+    }
+
+    public void search(Options options , String search) {
+        Observable<Result> result = getObservable(options, search);
+        apiTask(result);
+    }
+
+
+    private Observable<Result> getObservable(Options options , String search ) {
+      return   resultDAO.getResult(search , options);
     }
 }

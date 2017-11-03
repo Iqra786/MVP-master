@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.prac.mvp.R;
 import com.prac.mvp.android.activity.view.ArtistDetailActivity;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 import com.prac.mvp.model.Artist;
 
 
@@ -31,14 +31,14 @@ public class ArtistAdaptor extends  ResultAdaptor {
 
         try {
             itemViewHolderAdaptor.artistName.setText(artists.get(i).getArtistName());
-        } catch (DataNoAvailableException e) {
+        } catch (DataNotAvailableException e) {
             Log.e(TAG , e.getMessage());
         }
 
         try {
             String   url = artists.get(i).getImages().get(1).getImageLink();
             imageLoader(url , itemViewHolderAdaptor.artWork);
-        } catch (DataNoAvailableException|NullPointerException|IllegalArgumentException e) {
+        } catch (DataNotAvailableException |NullPointerException|IllegalArgumentException e) {
             Log.e(TAG , e.getMessage());
         }
 
@@ -56,7 +56,7 @@ public class ArtistAdaptor extends  ResultAdaptor {
                     data.putString("image_Url", artist.getImages().get(2).getImageLink());
                     data.putString("listener", artist.getListener());
                 }
-                catch (DataNoAvailableException e) {
+                catch (DataNotAvailableException e) {
                     Log.e(TAG , e.getMessage());
                 }
                 Intent intent = new Intent(itemViewHolderAdaptor.artistName.getContext() , ArtistDetailActivity.class);

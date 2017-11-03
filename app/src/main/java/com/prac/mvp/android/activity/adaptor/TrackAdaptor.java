@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.prac.mvp.R;
 import com.prac.mvp.android.activity.view.TrackDetailActivity;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 import com.prac.mvp.model.Track;
 
 
@@ -29,18 +29,18 @@ public class TrackAdaptor extends ResultAdaptor {
     protected void viewBinder(final ItemViewHolderAdaptor itemViewHolderAdaptor, int i) {
         try {
             itemViewHolderAdaptor.name.setText( tracks.get(i).getTrackName());
-        } catch (DataNoAvailableException e) {
+        } catch (DataNotAvailableException e) {
             Log.e(TAG , e.getMessage());
         }
         try {
             itemViewHolderAdaptor.artistName.setText(tracks.get(i).getArtistName());
-        } catch (DataNoAvailableException e) {
+        } catch (DataNotAvailableException e) {
             Log.e(TAG , e.getMessage());
         }
         try {
             String   url = tracks.get(i).getImages().get(1).getImageLink();
             imageLoader(url , itemViewHolderAdaptor.artWork);
-        } catch (DataNoAvailableException|NullPointerException|IllegalArgumentException e) {
+        } catch (DataNotAvailableException |NullPointerException|IllegalArgumentException e) {
             Log.e(TAG , e.getMessage());
         }
 
@@ -59,7 +59,7 @@ public class TrackAdaptor extends ResultAdaptor {
                     data.putString("image_Url", track.getImages().get(2).getImageLink());
                     data.putString("listener", track.getListener());
                 }
-                catch (DataNoAvailableException e) {
+                catch (DataNotAvailableException e) {
                     Log.e(TAG , e.getMessage());
                 }
                 Intent intent = new Intent(itemViewHolderAdaptor.artistName.getContext() , TrackDetailActivity.class);

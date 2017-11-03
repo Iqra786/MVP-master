@@ -4,7 +4,7 @@ package com.prac.mvp.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {
@@ -18,11 +18,11 @@ public class Image {
         this.imageSize = imageSize;
     }
 
-    public String getImageLink() throws DataNoAvailableException {
+    public String getImageLink() throws DataNotAvailableException {
         return imageLink;
     }
 
-    public String getImageSize() throws DataNoAvailableException {
+    public String getImageSize() throws DataNotAvailableException {
         return imageSize;
     }
 

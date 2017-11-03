@@ -4,6 +4,7 @@ package com.prac.mvp.android.components;
 import com.prac.mvp.android.activity.view.AlbumDetailActivity;
 import com.prac.mvp.android.activity.view.ResultActivity;
 import com.prac.mvp.android.modules.ApplicationModule;
+import com.prac.mvp.presenter.ResultActivityPresenter;
 
 import javax.inject.Singleton;
 
@@ -14,5 +15,5 @@ import dagger.Component;
 public interface ApplicationComponent {
    void  inject(ResultActivity resultActivity);
    void inject(AlbumDetailActivity albumDetailActivity);
-
+   void inject(ResultActivityPresenter resultActivityPresenter);
 }

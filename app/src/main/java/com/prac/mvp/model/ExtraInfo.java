@@ -1,7 +1,7 @@
 package com.prac.mvp.model;
 
 
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ExtraInfo implements Serializable {
     private String listener;
 
 
-    public String getUrl()  throws DataNoAvailableException {
+    public String getUrl()  throws DataNotAvailableException {
         return url;
     }
 
@@ -24,7 +24,7 @@ public class ExtraInfo implements Serializable {
         this.url = url;
     }
 
-    public List<Image> getImages() throws DataNoAvailableException {
+    public List<Image> getImages() throws DataNotAvailableException {
         return images;
 
     }
@@ -33,7 +33,7 @@ public class ExtraInfo implements Serializable {
         this.images = images;
     }
 
-    public String getStream() throws DataNoAvailableException{
+    public String getStream() throws DataNotAvailableException {
         return Stream;
     }
 
@@ -41,7 +41,7 @@ public class ExtraInfo implements Serializable {
         Stream = stream;
     }
 
-    public String getmBId() throws DataNoAvailableException{
+    public String getmBId() throws DataNotAvailableException {
         return mBId;
 
     }
@@ -50,7 +50,7 @@ public class ExtraInfo implements Serializable {
         this.mBId = mBId;
     }
 
-    public String getArtistName() throws DataNoAvailableException {
+    public String getArtistName() throws DataNotAvailableException {
         return artistName;
 
     }
@@ -59,7 +59,7 @@ public class ExtraInfo implements Serializable {
         this.artistName = artistName;
     }
 
-    public String getListener()  throws DataNoAvailableException {
+    public String getListener()  throws DataNotAvailableException {
         return listener;
 
     }

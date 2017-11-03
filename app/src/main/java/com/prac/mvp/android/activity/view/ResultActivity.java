@@ -61,7 +61,7 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityV
         ((LearnApplicationImpl) getApplication()).getComponent().inject(this);
         mAnimator = findViewById(R.id.animator);
         recyclerView = (RecyclerView) (mAnimator != null ? mAnimator.getChildAt(POSITION_LIST) : null);
-        resultActivityPresenter = new ResultActivityPresenter(this, resultDAO);
+        resultActivityPresenter = new ResultActivityPresenter(this , resultDAO);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         if (recyclerView != null) {
             recyclerView.setLayoutManager(layoutManager);

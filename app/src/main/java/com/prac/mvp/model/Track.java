@@ -2,7 +2,7 @@ package com.prac.mvp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Track extends ExtraInfo {
         setImages(image);
     }
 
-    public String getTrackName() throws DataNoAvailableException {
+    public String getTrackName() throws DataNotAvailableException {
         return trackName;
 
     }

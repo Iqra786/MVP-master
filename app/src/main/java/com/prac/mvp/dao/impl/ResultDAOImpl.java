@@ -1,6 +1,7 @@
 package com.prac.mvp.dao.impl;
 
 
+import com.prac.mvp.android.Options;
 import com.prac.mvp.dao.RemoteResultDAO;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.model.Result;
@@ -22,19 +23,20 @@ public class ResultDAOImpl implements ResultDAO {
     }
 
 
-
     @Override
-    public rx.Observable<Result> getArtist(String artistName) {
-        return remoteResultDAO.getRemoteArtists(artistName , serviceAPIKey , format);
-    }
-
-    @Override
-    public Observable<Result> getAlbum(String albumName) {
-        return  remoteResultDAO.getRemoteAlbums(albumName, serviceAPIKey, format);
-    }
-
-    @Override
-    public Observable<Result> getTrack(String trackName) {
-        return  remoteResultDAO.getRemoteTracks(trackName , serviceAPIKey , format);
+    public rx.Observable<Result> getResult(String search , Options searchMethod) {
+        Observable<Result> resultObservable = null;
+        switch (searchMethod) {
+            case ARTIST:
+                resultObservable = remoteResultDAO.getRemoteArtists(search, serviceAPIKey, format);
+                break;
+            case ALBUM:
+                resultObservable =  remoteResultDAO.getRemoteAlbums(search, serviceAPIKey, format);
+                break;
+            case TRACK:
+                resultObservable =   remoteResultDAO.getRemoteTracks(search , serviceAPIKey , format);
+                break;
+        }
+        return resultObservable;
     }
 }

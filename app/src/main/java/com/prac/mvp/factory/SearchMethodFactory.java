@@ -20,15 +20,14 @@ public class SearchMethodFactory {
         Observable<Result> observer = null;
         switch (options) {
             case ARTIST:
-                observer =  resultDAO.getArtist(search).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+                observer = resultDAO.getResult(search , Options.ARTIST);
                 break;
             case ALBUM:
-                observer = resultDAO.getAlbum(search).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+                observer = resultDAO.getResult(search , Options.ALBUM);
                 break;
             case TRACK:
-                observer = resultDAO.getTrack(search).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+                observer = resultDAO.getResult(search , Options.TRACK);
                 break;
-
         }
         return  observer;
     }

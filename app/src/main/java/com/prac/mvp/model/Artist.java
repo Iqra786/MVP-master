@@ -3,7 +3,7 @@ package com.prac.mvp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class Artist extends ExtraInfo {
     }
 
     @Override
-    public String getArtistName() throws DataNoAvailableException {
+    public String getArtistName() throws DataNotAvailableException {
         return artistName;
     }
 

@@ -4,7 +4,7 @@ package com.prac.mvp.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.prac.mvp.exception.DataNoAvailableException;
+import com.prac.mvp.exception.DataNotAvailableException;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ private String albumName;
         setmBId(mbid);
     }
 
-    public String getAlbumName() throws DataNoAvailableException {
+    public String getAlbumName() throws DataNotAvailableException {
         return albumName;
     }
 }

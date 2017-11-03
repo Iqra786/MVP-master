@@ -29,7 +29,7 @@ public class Result {
 
 
     @JsonProperty("results")
-    public MatchItem getMatchItem()throws NullPointerException {
+    public MatchItem getMatchItem() {
         return matchItem;
     }
 

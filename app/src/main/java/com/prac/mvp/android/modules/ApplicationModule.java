@@ -7,6 +7,7 @@ import com.prac.mvp.dao.RemoteResultDAO;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.dao.impl.RemoteResultDAOBuilder;
 import com.prac.mvp.dao.impl.ResultDAOImpl;
+import com.prac.mvp.factory.SearchMethodFactory;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -17,7 +18,7 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-private Application mApp;
+    private Application mApp;
 
     public ApplicationModule(Application mApp) {
         this.mApp = mApp;
@@ -25,21 +26,27 @@ private Application mApp;
 
     @Provides
     @Singleton
-    protected RemoteResultDAO remoteResultDAO(@Named("serviceUrl") String serviceUrl){
+    protected RemoteResultDAO remoteResultDAO(@Named("serviceUrl") String serviceUrl) {
         return new RemoteResultDAOBuilder(serviceUrl).build();
     }
 
     @Provides
     @Singleton
-    protected ResultDAO resultDAO(RemoteResultDAO remoteResultDAO , @Named("apiKey") String serviceApiKey ,   @Named("format") String format){
-      return   new ResultDAOImpl(remoteResultDAO , serviceApiKey , format);
+    protected ResultDAO resultDAO(RemoteResultDAO remoteResultDAO, @Named("apiKey") String serviceApiKey, @Named("format") String format) {
+        return new ResultDAOImpl(remoteResultDAO, serviceApiKey, format);
+    }
+
+    @Provides
+    @Singleton
+    protected SearchMethodFactory searchMethodFactory(ResultDAO resultDAO) {
+        return new SearchMethodFactory(resultDAO);
     }
 
 
     @Provides
     @Singleton
     @Named("serviceUrl")
-    protected String serviceUrl(){
+    protected String serviceUrl() {
         return "unknown";
     }
 
@@ -47,7 +54,7 @@ private Application mApp;
     @Provides
     @Singleton
     @Named("apiKey")
-    protected String serviceAPIKey(){
+    protected String serviceAPIKey() {
         return "unknown";
     }
 
@@ -55,7 +62,7 @@ private Application mApp;
     @Provides
     @Singleton
     @Named("format")
-    protected String serviceResultFormat(){
+    protected String serviceResultFormat() {
         return "unknown";
     }
 
