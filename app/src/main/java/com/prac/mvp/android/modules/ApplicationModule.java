@@ -6,7 +6,7 @@ import android.app.Application;
 import com.prac.mvp.dao.RemoteResultDAO;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.dao.impl.RemoteResultDAOBuilder;
-import com.prac.mvp.dao.impl.ResultDAOImpl;
+import com.prac.mvp.dao.impl.RemoteResultDAOImpl;
 import com.prac.mvp.factory.SearchMethodFactory;
 
 import javax.inject.Named;
@@ -33,7 +33,7 @@ public class ApplicationModule {
     @Provides
     @Singleton
     protected ResultDAO resultDAO(RemoteResultDAO remoteResultDAO, @Named("apiKey") String serviceApiKey, @Named("format") String format) {
-        return new ResultDAOImpl(remoteResultDAO, serviceApiKey, format);
+        return new RemoteResultDAOImpl(remoteResultDAO, serviceApiKey, format);
     }
 
     @Provides

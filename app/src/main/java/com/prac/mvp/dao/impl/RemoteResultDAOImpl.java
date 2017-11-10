@@ -9,14 +9,14 @@ import com.prac.mvp.model.Result;
 import rx.Observable;
 
 
-public class ResultDAOImpl implements ResultDAO {
+public class RemoteResultDAOImpl implements ResultDAO {
 
     private RemoteResultDAO remoteResultDAO;
     private  String serviceAPIKey;
     private  String format;
 
 
-    public ResultDAOImpl(RemoteResultDAO remoteResultDAO, String serviceAPIKey , String format) {
+    public RemoteResultDAOImpl(RemoteResultDAO remoteResultDAO, String serviceAPIKey , String format) {
         this.remoteResultDAO = remoteResultDAO;
         this.serviceAPIKey = serviceAPIKey;
         this.format = format;

@@ -17,7 +17,6 @@ import rx.Observable;
 import rx.Subscriber;
 
 
-
 public class DAOManager {
 
     private final static String TAG = DAOManager.class.getSimpleName();
@@ -25,22 +24,22 @@ public class DAOManager {
     private DAOManagerResponse daoManagerResponse;
     private ResultDAO resultDAO;
 
-    public DAOManager(DAOManagerResponse daoManagerResponse , ResultDAO resultDAO) {
+    public DAOManager(DAOManagerResponse daoManagerResponse, ResultDAO resultDAO) {
         this.daoManagerResponse = daoManagerResponse;
         this.resultDAO = resultDAO;
     }
 
 
-    private void apiTask(final Observable<Result> observer) {
+    private void apiTask(final Observable<Result> observer, final Options search) {
         observer.subscribe(new Subscriber<Result>() {
             @Override
             public void onCompleted() {
-                Log.i(TAG , "onComplete" );
+                Log.i(TAG, "onComplete");
             }
 
             @Override
             public void onError(Throwable e) {
-                    Gson gson = new Gson();
+                Gson gson = new Gson();
                 try {
                     ResponseBody response = ((HttpException) e).response().errorBody();
                     if (response != null) {
@@ -51,42 +50,25 @@ public class DAOManager {
                             daoManagerResponse.onError(e.getMessage());
                         }
                     }
-                }
-                catch (RuntimeException exception) {
+                } catch (RuntimeException exception) {
                     daoManagerResponse.onError(e.getMessage());
                 }
             }
 
             @Override
             public void onNext(Result result) {
-                    try {
-                        daoManagerResponse.onResponse(result.getMatchItem().getAlbummatches().getAlbum());
-                    }
-                catch (NullPointerException e) {
-                    Log.e(TAG, e.getMessage());
-                }
-                try {
-                    daoManagerResponse.onResponse(result.getMatchItem().getArtists().getArtists());
-                } catch (NullPointerException e) {
-                    Log.e(TAG, e.getMessage());
-                }
-
-                try {
-                    daoManagerResponse.onResponse(result.getMatchItem().getTracks().getTracks());
-                } catch (NullPointerException e) {
-                    Log.e(TAG, e.getMessage());
-                }
+                daoManagerResponse.onResponse(result, search );
             }
         });
     }
 
-    public void search(Options options , String search) {
+    public void search(Options options, String search) {
         Observable<Result> result = getObservable(options, search);
-        apiTask(result);
+        apiTask(result, options);
     }
 
 
-    private Observable<Result> getObservable(Options options , String search ) {
-      return   resultDAO.getResult(search , options);
+    private Observable<Result> getObservable(Options options, String search) {
+        return resultDAO.getResult(search, options);
     }
 }
