@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ResultActivityView {
     void renderList(List<?> result);
-    void albumsList(List<Album> albumList);
+    /*void albumsList(List<Album> albumList);
     void artistsList(List<Artist> artistList);
-    void  trackList(List<Track> trackList);
+    void  trackList(List<Track> trackList);*/
     void showProgress();
     void dismissProgress();
     void onSearchComplete();

@@ -2,16 +2,22 @@ package com.prac.mvp.android.modules;
 
 
 import android.app.Application;
+import android.support.v7.app.AppCompatActivity;
 
+import com.prac.mvp.android.activity.view.ResultActivity;
+import com.prac.mvp.android.activity.view.ResultActivityView;
 import com.prac.mvp.dao.RemoteResultDAO;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.dao.impl.RemoteResultDAOBuilder;
 import com.prac.mvp.dao.impl.RemoteResultDAOImpl;
 import com.prac.mvp.factory.SearchMethodFactory;
+import com.prac.mvp.presenter.DAOManagerResponse;
+import com.prac.mvp.presenter.ResultActivityPresenter;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,8 +26,16 @@ public class ApplicationModule {
 
     private Application mApp;
 
+
     public ApplicationModule(Application mApp) {
         this.mApp = mApp;
+    }
+
+
+    @Provides
+    @Singleton
+    protected  ResultActivityPresenter resultActivityPresenter(ResultActivity resultActivityView){
+        return new ResultActivityPresenter(resultActivityView);
     }
 
     @Provides
@@ -29,6 +43,7 @@ public class ApplicationModule {
     protected RemoteResultDAO remoteResultDAO(@Named("serviceUrl") String serviceUrl) {
         return new RemoteResultDAOBuilder(serviceUrl).build();
     }
+
 
     @Provides
     @Singleton

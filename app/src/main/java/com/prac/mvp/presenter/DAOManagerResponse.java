@@ -7,4 +7,5 @@ import com.prac.mvp.model.Result;
 public interface DAOManagerResponse {
     void onError(String error);
     void onResponse(Result result, Options search);
+    void startSearch(Options options, String search);
 }

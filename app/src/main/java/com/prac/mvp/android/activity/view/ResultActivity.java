@@ -22,11 +22,15 @@ import com.prac.mvp.android.Options;
 import com.prac.mvp.android.activity.adaptor.AlbumAdaptor;
 import com.prac.mvp.android.activity.adaptor.ArtistAdaptor;
 import com.prac.mvp.android.activity.adaptor.TrackAdaptor;
+import com.prac.mvp.android.components.DaggerActivityComponent;
+import com.prac.mvp.android.components.DaggerApplicationComponent;
+import com.prac.mvp.android.modules.ActivityModule;
 import com.prac.mvp.dao.RemoteResultDAO;
 import com.prac.mvp.dao.ResultDAO;
 import com.prac.mvp.model.Album;
 import com.prac.mvp.model.Artist;
 import com.prac.mvp.model.Track;
+import com.prac.mvp.presenter.DAOManagerResponse;
 import com.prac.mvp.presenter.ResultActivityPresenter;
 
 import java.util.List;
@@ -42,26 +46,30 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityV
     private ViewAnimator mAnimator;
 
 
-    @Inject
-    RemoteResultDAO remoteResultDAO;
+    /*@Inject
+    RemoteResultDAO remoteResultDAO;*/
 
-    @Inject
-    ResultDAO resultDAO;
+    /*@Inject
+    ResultDAO resultDAO;*/
 
 
     private SearchView mSearch;
 
+    @Inject
     ResultActivityPresenter resultActivityPresenter;
+
+
+
     RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((LearnApplicationImpl) getApplication()).getComponent().inject(this);
+        DaggerActivityComponent.builder().applicationComponent(((LearnApplicationImpl) getApplication()).getComponent()).activityModule(new ActivityModule(this)).build().inject(this);
+//        DaggerApplicationComponent.builder().applicationModule(applicationModule).build();
         mAnimator = findViewById(R.id.animator);
         recyclerView = (RecyclerView) (mAnimator != null ? mAnimator.getChildAt(POSITION_LIST) : null);
-        resultActivityPresenter = new ResultActivityPresenter(this , resultDAO);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         if (recyclerView != null) {
             recyclerView.setLayoutManager(layoutManager);
@@ -147,7 +155,8 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityV
 
     @Override
     public void noResult() {
-        mAnimator.setDisplayedChild(POSITION_EMPTY);
+        System.out.println("Yes I am back");
+//        mAnimator.setDisplayedChild(POSITION_EMPTY);
     }
 
     @Override
